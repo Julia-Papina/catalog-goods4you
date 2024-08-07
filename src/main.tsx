@@ -4,14 +4,31 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { App } from './App';
+import { HomePage } from './pages/main-page';
+import { ProductPage } from "./pages/product-page";
+import { CartPage } from "./pages/cart-page";
+import { PageNotFound } from "./pages/page-not-found";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <HomePage/>,
   },
+  {
+    path: "product/:id",
+    element: <ProductPage />,
+  },
+  {
+    path: "cart",
+    element: <CartPage />,
+  },
+  {
+    path: "*",
+    element: <PageNotFound/>,
+  },
+
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

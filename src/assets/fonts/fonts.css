@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./Jost-Regular.ttf') format("opentype"),
+     
+}
+@font-face {
+    font-family: "Jost";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('./Jost-SemiBold.ttf') format("opentype"),
+    
+  }
+  
+  @font-face {
+    font-family: "Jost";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./Jost-Bold.ttf') format("opentype"),
+       
+  }
+  

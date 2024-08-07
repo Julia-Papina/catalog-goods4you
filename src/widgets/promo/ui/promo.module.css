@@ -1,0 +1,19 @@
+.promo {
+  display: flex;
+  flex-direction: column;
+  background-color: #484283;
+  min-height: 590px;
+}
+.content {
+  /* border-top: 1px solid #FFFFFF; */
+  display: flex;
+  /* max-width: 1180px; */
+  padding: 0 130px;
+}
+.title {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 50px;
+  color: #ffffff;
+  margin-top: 115px;
+}

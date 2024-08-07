@@ -1,0 +1,23 @@
+.notfound__container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 250px auto;
+  }
+  
+  .notfound__title {
+    font-weight: 400;
+    font-size: 140px;
+    margin: 0;
+    line-height: normal;
+    font-style: normal;
+  }
+  
+  .notfound__subtitle {
+    margin: 10px auto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+
