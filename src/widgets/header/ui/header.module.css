@@ -26,13 +26,18 @@
 }
 .header__navLink {
   display: block;
-
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
 }
+.header__navLink:hover {
+  color:  #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;;
+  
+}
+
 
 .header__navCart {
     display: flex;
@@ -61,4 +66,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
+}
+@media screen and (max-width: 799px) {
+  .header__container {
+    padding: 23px;
+  }
+  .header__nav {
+    display: none;
+   
+  }
 }

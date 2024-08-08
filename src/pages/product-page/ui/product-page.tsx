@@ -1,5 +1,8 @@
+import { Header } from "../../../widgets/header"
 export const ProductPage = () => {
     return (
-        <div>Страница продукта</div>
+        <div>
+            <Header />
+        </div>
     )
 }
