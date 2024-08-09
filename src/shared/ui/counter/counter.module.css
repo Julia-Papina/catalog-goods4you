@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 188px;
+}
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f14f4f;
+  cursor: pointer;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+.buttonCount {
+  color: #444b58;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}

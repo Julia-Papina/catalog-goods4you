@@ -1,7 +1,9 @@
+import { useState } from "react";
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { MainButton } from "../main-button/main-button";
 import { BasketIcon } from "../../../assets";
-
+import { Counter } from "../counter/counter";
 import styles from "./product-card.module.css";
 
 export const ProductCard = ({
@@ -15,28 +17,47 @@ export const ProductCard = ({
   name: string;
   price: string;
 }) => {
+  const [isCounter, setIsCounter] = useState(false);
+  const handleClickBasket = () => {
+    setIsCounter(!isCounter);
+  };
   return (
     <article className={styles.productCard}>
-      <Link to={`/product/${id}`} className={styles.productCard__link}>
+      <Link to={`/product/${id}`} className={styles.link}>
         <img
-          className={styles.productCard__image}
+          className={styles.image}
           src={link}
           alt="Изображение товара"
         ></img>
-        <div className={styles.cover__overlay}>Show details</div>
+        <div className={styles.overlay}>Show details</div>
       </Link>
-      <div className={styles.productCard__description}>
-        <ul className={styles.productCard__text}>
-          <li className={styles.productCard__textTitle}>{name}</li>
-          <li className={styles.productCard__textPrice}>{price}</li>
+      <div className={styles.description}>
+        <ul
+          className={clsx(styles.text, {
+            [styles.textCounter]: isCounter,
+          })}
+        >
+          <li
+            className={clsx(styles.textTitle, {
+              [styles.textTitle__counter]: isCounter,
+            })}
+          >
+            {name}
+          </li>
+          <li className={styles.textPrice}>{price}</li>
         </ul>
-        <MainButton variant="secondary">
-          <img
-            src={BasketIcon}
-            alt="Иконка корзины товаров"
-            className={styles.basketIcon}
-          ></img>
-        </MainButton>
+
+        {isCounter ? (
+          <Counter />
+        ) : (
+          <MainButton variant="secondary" onClick={handleClickBasket}>
+            <img
+              src={BasketIcon}
+              alt="Иконка корзины товаров"
+              className={styles.basketIcon}
+            ></img>
+          </MainButton>
+        )}
       </div>
     </article>
   );

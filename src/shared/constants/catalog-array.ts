@@ -20,7 +20,7 @@ export const catalogArray = [
   },
   {
     link: `${ProductIcon}`,
-    id: 3,
+    id: 4,
     name: "Essence Mascara Lash Princess",
     price: "$110",
   },
