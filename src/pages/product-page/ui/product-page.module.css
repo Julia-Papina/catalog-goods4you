@@ -3,28 +3,17 @@
 }
 .product {
   display: flex;
-
-  padding: 48px 130px;
+  padding: 48px 130px 114px;
 }
 .content {
   display: flex;
   gap: 40px;
 }
-.galery {
+.infoProduct {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 24px;
 }
-.galeryList {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.itemFoto {
-  width: 70px;
-  height: 70px;
-}
-
 .descProduct {
   display: flex;
   flex-direction: column;
@@ -35,47 +24,98 @@
   font-size: 36px;
   line-height: 56px;
   color: #444b58;
+  margin: 0 0 16px;
+}
+.deadlines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .titleSpan {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #646464;
+  margin: 0;
 }
 .rating {
   display: flex;
   justify-content: space-between;
 }
 .subtitle {
+  display: block;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #f14f4f;
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
 }
 .subtitleDescription {
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
   color: #444b58;
+  margin: 24px 0;
 }
 .buy {
   display: flex;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 4%);
-
+  max-width: 620px;
   padding: 12px;
   border-radius: 6px;
 }
-
+.priceProduct {
+  display: flex;
+}
 .price {
   display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d5d5d5;
+  gap: 2px;
+  padding-left: 20px;
+  padding-right: 24px;
+}
+.priceTitle {
   font-weight: 600;
   font-size: 36px;
   line-height: 40px;
   color: #444b58;
-  border-right: 1px solid #d5d5d5;
 }
-.buyButton {
+.priceSubtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #646464;
+  text-decoration: line-through;
+}
+.discount {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 19px 20px 24px;
+}
+.discountTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #444b58;
+}
+.discountPrice {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #444b58;
+}
+.ratingStars {
+  cursor: pointer;
+}
+.footerContainer {
+  margin-top: 48px;
 }
 
 @media screen and (max-width: 1200px) {

@@ -1,0 +1,21 @@
+.galery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.galeryList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.itemFoto {
+  width: 70px;
+  height: 70px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mainFoto {
+    width: 300px;
+    height: 300px;
+  }
+}
