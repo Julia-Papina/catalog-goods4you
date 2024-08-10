@@ -9,6 +9,14 @@
 @font-face {
   font-family: "Jost";
   font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./Jost-Medium.woff") format("woff"),
+    url("./Jost-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
   font-weight: 600;
   font-display: swap;
   src: url("./Jost-SemiBold.woff") format("woff"),

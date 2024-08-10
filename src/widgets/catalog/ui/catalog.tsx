@@ -7,8 +7,12 @@ import styles from "./catalog.module.css";
 export const Catalog = () => {
   return (
     <section id="catalog" className={styles.catalog}>
-      <h2 className={styles.title}>Catalog</h2>
-      <InputSearch />
+      <h2 className={styles.title}>Catalog </h2>
+
+      <div className={styles.input}>
+        <InputSearch search={() => {}} onChange={() => {}} />
+      </div>
+
       <div className={styles.cardsList}>
         {catalogArray.map((item) => (
           <ProductCard

@@ -5,7 +5,7 @@ import { NounsDeclension } from "../../constants/declension";
 import styles from "./counter.module.css";
 
 export const Counter = () => {
-  const [isNumber, SetIsNumber] = useState(0);
+  const [isNumber, SetIsNumber] = useState(1);
   const increment = () => {
     SetIsNumber(isNumber + 1);
   };
@@ -13,7 +13,7 @@ export const Counter = () => {
     if (!isNumber) {
       return;
     }
-    SetIsNumber(isNumber - 1 || 0);
+    SetIsNumber(isNumber - 1 || 1);
   };
   return (
     <div className={styles.container}>

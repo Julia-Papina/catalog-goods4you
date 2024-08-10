@@ -46,10 +46,12 @@
   line-height: 20px;
   color: #444b58;
   overflow: hidden;
+  max-width: 310px;
 	text-overflow: ellipsis;
-  white-space: nowrap
+  white-space: nowrap;
    
 }
+
 .textTitle__counter {
   font-weight: 600;
   font-size: 16px;
@@ -91,12 +93,30 @@
   align-items: center;
 }
 
-.productCard:hover .overlay {
+.productCard:hover .overlay  {
   visibility: visible;
   opacity: 60%;
+  
 }
-@media screen and (max-width: 465px) {
-  .productCard__image {
-    width: 300px;
+
+.textTitle:hover {
+  border-bottom: 1px solid #444b58;
+}
+/* @media screen and (max-width: 465px) {
+  .image {
+    width: 250px;
+    height: 250px;
   }
-}
+  .overlay {
+    height: 250px;
+  }
+  .textTitle {
+    max-width: 200px;
+  }
+  .textTitle__counter {
+    max-width: 50px;
+  }
+  .textCounter {
+    width: 100px;
+  }
+} */

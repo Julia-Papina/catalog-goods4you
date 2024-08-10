@@ -17,18 +17,21 @@ export const ProductCard = ({
   name: string;
   price: string;
 }) => {
-  const [isCounter, setIsCounter] = useState(false);
+  const counterId = () => {
+    if (id === 6) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const [isCounter, setIsCounter] = useState(counterId);
   const handleClickBasket = () => {
     setIsCounter(!isCounter);
   };
   return (
     <article className={styles.productCard}>
       <Link to={`/product/${id}`} className={styles.link}>
-        <img
-          className={styles.image}
-          src={link}
-          alt="Изображение товара"
-        ></img>
+        <img className={styles.image} src={link} alt="Изображение товара"></img>
         <div className={styles.overlay}>Show details</div>
       </Link>
       <div className={styles.description}>

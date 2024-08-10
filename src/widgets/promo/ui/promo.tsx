@@ -1,11 +1,11 @@
-import { Header } from "../../header";
+// import { Header } from "../../header";
 import { MainButton } from "../../../shared/ui";
 import styles from "./promo.module.css";
 
 export const Promo = () => {
   return (
     <section className={styles.promo} id="promo">
-      <Header />
+      {/* <Header /> */}
 
       <div className={styles.content}>
         <h1 className={styles.title}>
