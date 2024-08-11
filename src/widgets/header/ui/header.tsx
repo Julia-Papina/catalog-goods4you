@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { scroller } from "react-scroll";
 import { NavLink } from "react-router-dom";
-import basket from "../../../assets/icons/basket.svg";
+import basket from "../../../shared/assets/icons/basket.svg";
 
 import styles from "./header.module.css";
 

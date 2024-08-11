@@ -1,4 +1,4 @@
-import { ProductIcon } from "../../assets";
+import { ProductIcon } from "../assets";
 export const catalogArray = [
   {
     link: `${ProductIcon}`,

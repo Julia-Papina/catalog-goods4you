@@ -20,6 +20,10 @@
   background-color: #f14f4f;
   cursor: pointer;
 }
+.button:hover {
+  background-color: #8C2828;
+}
+
 
 .icon {
   width: 18px;

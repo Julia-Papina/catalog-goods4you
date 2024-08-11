@@ -1,4 +1,4 @@
-import productFoto from "../../../assets/icons/product.svg";
+import productFoto from "../../assets/icons/product.svg";
 import styles from "./product-galery.module.css";
 export const ProductGalery = () => {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IconMinus } from "../../../assets";
-import { IconPlus } from "../../../assets";
+import { IconMinus } from "../../assets";
+import { IconPlus } from "../../assets";
 import { NounsDeclension } from "../../constants/declension";
 import styles from "./counter.module.css";
 
@@ -18,7 +18,11 @@ export const Counter = () => {
   return (
     <div className={styles.container}>
       <div className={styles.buttonWrapper}>
-        <button className={styles.button} onClick={decrement}>
+        <button
+          className={styles.button}
+          onClick={decrement}
+          aria-label="Минус товар"
+        >
           <img src={IconMinus} className={styles.icon} alt="иконка минус" />
         </button>
       </div>
@@ -29,7 +33,11 @@ export const Counter = () => {
         </span>
       </div>
       <div className={styles.buttonWrapper}>
-        <button className={styles.button} onClick={increment}>
+        <button
+          className={styles.button}
+          onClick={increment}
+          aria-label="Плюс товар"
+        >
           <img src={IconPlus} className={styles.icon} alt="иконка плюс" />
         </button>
       </div>

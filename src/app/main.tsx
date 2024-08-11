@@ -4,10 +4,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { HomePage } from './pages/main-page';
-import { ProductPage } from "./pages/product-page";
-import { CartPage } from "./pages/cart-page";
-import { PageNotFound } from "./pages/page-not-found";
+import { HomePage } from '../pages/main-page';
+import { ProductPage } from "../pages/product-page";
+import { CartPage } from "../pages/cart-page";
+import { PageNotFound } from "../pages/page-not-found";
 import "./index.css";
 
 const router = createBrowserRouter([

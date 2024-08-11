@@ -1,6 +1,5 @@
 import { InputSearch, MainButton } from "../../../shared/ui";
 import { ProductCard } from "../../../shared/ui";
-
 import { catalogArray } from "../../../shared/constants/catalog-array";
 import styles from "./catalog.module.css";
 
@@ -25,7 +24,7 @@ export const Catalog = () => {
         ))}
       </div>
       <div className={styles.catalogButton}>
-        <MainButton variant="main">Show more</MainButton>
+        <MainButton variant="main" aria-label="Показать больше товаров">Show more</MainButton>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { MainButton } from "../main-button/main-button";
-import { BasketIcon } from "../../../assets";
+import { BasketIcon } from "../../assets";
 import { Counter } from "../counter/counter";
 import styles from "./product-card.module.css";
 
@@ -53,7 +53,11 @@ export const ProductCard = ({
         {isCounter ? (
           <Counter />
         ) : (
-          <MainButton variant="secondary" onClick={handleClickBasket}>
+          <MainButton
+            variant="secondary"
+            onClick={handleClickBasket}
+            aria-label="Добавить товар в корзину"
+          >
             <img
               src={BasketIcon}
               alt="Иконка корзины товаров"

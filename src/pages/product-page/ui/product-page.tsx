@@ -2,7 +2,7 @@ import { Header } from "../../../widgets/header";
 import { PageTitle } from "../../../shared/ui";
 import { Footer } from "../../../widgets/footer";
 import { ProductGalery } from "../../../shared/ui";
-import stars from "../../../assets/icons/starts.svg";
+import stars from "../../../shared/assets/icons/starts.svg";
 import styles from "./product-page.module.css";
 import { MainButton } from "../../../shared/ui";
 
