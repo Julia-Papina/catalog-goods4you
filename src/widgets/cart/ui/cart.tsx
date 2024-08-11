@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MainButton } from "../../shared/ui/main-button/main-button";
-import { Counter } from "../../shared/ui/counter/counter";
-import { BasketIcon } from "../../shared/assets";
+import { MainButton } from "../../../shared/ui/main-button/main-button";
+import { Counter } from "../../../shared/ui/counter/counter";
+import { BasketIcon } from "../../../shared/assets";
 import styles from "./cart.module.css";
 
 export const CartProductItem = ({

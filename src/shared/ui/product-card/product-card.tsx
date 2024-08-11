@@ -25,7 +25,8 @@ export const ProductCard = ({
     }
   };
   const [isCounter, setIsCounter] = useState(counterId);
-  const handleClickBasket = () => {
+  const handleClickBasket = (evt: React.MouseEvent | React.TouchEvent) => {
+    evt.preventDefault();
     setIsCounter(!isCounter);
   };
   return (
@@ -33,7 +34,7 @@ export const ProductCard = ({
       <Link to={`/product/${id}`} className={styles.link}>
         <img className={styles.image} src={link} alt="Изображение товара"></img>
         <div className={styles.overlay}>Show details</div>
-      </Link>
+      
       <div className={styles.description}>
         <ul
           className={clsx(styles.text, {
@@ -53,19 +54,22 @@ export const ProductCard = ({
         {isCounter ? (
           <Counter />
         ) : (
-          <MainButton
-            variant="secondary"
-            onClick={handleClickBasket}
-            aria-label="Добавить товар в корзину"
-          >
-            <img
-              src={BasketIcon}
-              alt="Иконка корзины товаров"
-              className={styles.basketIcon}
-            ></img>
-          </MainButton>
+          <div className={styles.buttonMain}>
+            <MainButton
+              variant="secondary"
+              onClick={handleClickBasket}
+              aria-label="Добавить товар в корзину"
+            >
+              <img
+                src={BasketIcon}
+                alt="Иконка корзины товаров"
+                className={styles.basketIcon}
+              ></img>
+            </MainButton>
+          </div>
         )}
       </div>
+      </Link>
     </article>
   );
 };

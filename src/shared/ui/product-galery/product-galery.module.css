@@ -6,7 +6,7 @@
 .galeryList {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .itemFoto {
   width: 70px;
@@ -14,8 +14,22 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .galery {
+    justify-content: center;
+    align-items: center;
+  }
   .mainFoto {
-    width: 300px;
-    height: 300px;
+    width: 520px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .mainFoto {
+    width: 250px;
+  }
+  .galeryList {
+    overflow: auto;
+    width: 250px;
+    gap: 5px;
   }
 }

@@ -1,7 +1,7 @@
 import { Header } from "../../../widgets/header";
 import { PageTitle } from "../../../shared/ui";
 import { Footer } from "../../../widgets/footer";
-import { CartProductItem } from "../../../shared/ui";
+import { CartProductItem } from '../../../widgets/cart';
 import { cartProductsArray } from "../../../shared/constants/cartProductsArray";
 import styles from "./cart-page.module.css";
 

@@ -3,11 +3,13 @@
 }
 .product {
   display: flex;
-  padding: 48px 130px 114px;
+  max-width: 1180px;
+  margin: 48px auto;
 }
 .content {
   display: flex;
   gap: 40px;
+  margin-bottom: 114px;
 }
 .infoProduct {
   display: flex;
@@ -120,13 +122,33 @@
 
 @media screen and (max-width: 1200px) {
   .product {
-    padding: 48px 80px;
+    padding: 20px;
   }
   .content {
     flex-direction: column;
   }
-  .mainFoto {
-    width: 300px;
-    height: 300px;
+
+}
+@media screen and (max-width: 650px) {
+  .buy {
+    flex-direction: column;
   }
+  .rating {
+    flex-direction: column;
+  }
+  .ratingStars {
+    width: 100px;
+  }
+  .content {
+    gap: 20px;
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 465px) {
+  .product {
+    padding: 5px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
 }

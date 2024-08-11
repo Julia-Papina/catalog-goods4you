@@ -55,7 +55,7 @@ export const ProductPage = () => {
               </div>
 
               <div className={styles.buyButton}>
-                <MainButton variant="main">Add to cart</MainButton>
+                <MainButton variant="main" aria-label="Добавить товар в корзину">Add to cart</MainButton>
               </div>
             </div>
           </div>

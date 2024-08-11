@@ -1,7 +1,7 @@
 .cart {
-  /* min-height: 100vh; */
   display: flex;
-  padding: 48px 130px 48px;
+  max-width: 1180px;
+  margin: 48px auto;
   flex-direction: column;
   gap: 48px;
 }
@@ -24,7 +24,6 @@
   padding: 20px 40px;
   gap: 10px;
   margin-bottom: 44px;
-
 }
 .cartTotal {
   display: flex;
@@ -78,4 +77,21 @@
   font-size: 24px;
   line-height: 30px;
   color: #444b58;
+}
+
+@media screen and (max-width: 799px) {
+  .cart {
+    margin: 20px auto;
+    gap: 20px
+  }
+  .cartContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cartTotal {
+    width: 300px;
+  }
+  .cartForm {
+    padding: 5px;
+  }
 }

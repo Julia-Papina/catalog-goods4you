@@ -11,6 +11,7 @@
 
 .link {
   text-decoration: none;
+  color: #444b58;
 }
 .description {
   display: flex;
@@ -36,9 +37,8 @@
   width: 172px;
   flex-wrap: nowrap;
   overflow: hidden;
-	text-overflow: ellipsis;
+  text-overflow: ellipsis;
   height: 50px;
-  
 }
 .textTitle {
   font-weight: 600;
@@ -47,9 +47,8 @@
   color: #444b58;
   overflow: hidden;
   max-width: 310px;
-	text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
-   
 }
 
 .textTitle__counter {
@@ -58,16 +57,16 @@
   line-height: 20px;
   color: #444b58;
   overflow: hidden;
-	text-overflow: ellipsis;
+  text-overflow: ellipsis;
   max-width: 172px;
-  white-space: nowrap
+  white-space: nowrap;
 }
-
 
 .textPrice {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+  color: #444b58;
 }
 .basketIcon {
   width: 18px;
@@ -93,16 +92,19 @@
   align-items: center;
 }
 
-.productCard:hover .overlay  {
+.productCard:hover .overlay {
   visibility: visible;
   opacity: 60%;
-  
 }
 
 .textTitle:hover {
   border-bottom: 1px solid #444b58;
+  cursor: pointer;
 }
-/* @media screen and (max-width: 465px) {
+.buttonMain {
+  width: 50px;
+}
+@media screen and (max-width: 465px) {
   .image {
     width: 250px;
     height: 250px;
@@ -110,13 +112,7 @@
   .overlay {
     height: 250px;
   }
-  .textTitle {
-    max-width: 200px;
+  .description {
+    flex-direction: column;
   }
-  .textTitle__counter {
-    max-width: 50px;
-  }
-  .textCounter {
-    width: 100px;
-  }
-} */
+}

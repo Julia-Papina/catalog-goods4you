@@ -6,13 +6,15 @@ import styles from "./counter.module.css";
 
 export const Counter = () => {
   const [isNumber, SetIsNumber] = useState(1);
-  const increment = () => {
+  const increment = (evt: React.MouseEvent | React.TouchEvent) => {
+    evt.preventDefault();
     SetIsNumber(isNumber + 1);
   };
-  const decrement = () => {
+  const decrement = (evt: React.MouseEvent | React.TouchEvent) => {
     if (!isNumber) {
       return;
     }
+    evt.preventDefault();
     SetIsNumber(isNumber - 1 || 1);
   };
   return (
