@@ -4,18 +4,19 @@ import { IconPlus } from "../../assets";
 import { NounsDeclension } from "../../constants/declension";
 import styles from "./counter.module.css";
 
-export const Counter = () => {
-  const [isNumber, SetIsNumber] = useState(1);
+export const Counter = ({quantity} : {quantity: number}) => {
+  const [isNumber, SetIsNumber] = useState(quantity ? quantity : 0);
   const increment = (evt: React.MouseEvent | React.TouchEvent) => {
     evt.preventDefault();
     SetIsNumber(isNumber + 1);
   };
   const decrement = (evt: React.MouseEvent | React.TouchEvent) => {
     if (!isNumber) {
+      evt.preventDefault();
       return;
     }
     evt.preventDefault();
-    SetIsNumber(isNumber - 1 || 1);
+    SetIsNumber(isNumber - 1 || 0);
   };
   return (
     <div className={styles.container}>

@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { scroller } from "react-scroll";
 import { NavLink } from "react-router-dom";
 import basket from "../../../shared/assets/icons/basket.svg";
-
 import styles from "./header.module.css";
 
 export const Header = () => {
@@ -14,7 +14,24 @@ export const Header = () => {
       });
     }, 1);
   };
+  const [totalQuantity, setTotalQuantity] = useState<number | null>(null);
 
+  useEffect(() => {
+    const userId = 6;
+    fetch(`https://dummyjson.com/carts/user/${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (
+          data.carts &&
+          data.carts.length > 0 &&
+          data.carts[0].totalQuantity > 0
+        ) {
+          setTotalQuantity(data.carts[0].totalQuantity);
+        }
+      })
+      .catch((err) => console.error("Error fetching cart data:", err));
+  }, [setTotalQuantity]);
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -40,14 +57,16 @@ export const Header = () => {
             <NavLink className={styles.header__navLink} to={"/cart"}>
               Cart
             </NavLink>
-            <div className={styles.header__cartBasket}>
-              <img
-                className={styles.header__imageBasket}
-                src={basket}
-                alt="иконка корзины"
-              />
-              <div className={styles.header__navCounter}>1</div>
-            </div>
+            {totalQuantity !== null && totalQuantity > 0 && (
+              <div className={styles.header__cartBasket}>
+                <img
+                  className={styles.header__imageBasket}
+                  src={basket}
+                  alt="иконка корзины"
+                />
+                <div className={styles.header__navCounter}>{totalQuantity}</div>
+              </div>
+            )}
           </div>
 
           <NavLink className={styles.header__navLink} to={""}>

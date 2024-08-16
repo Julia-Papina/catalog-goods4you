@@ -10,20 +10,18 @@ export const CartProductItem = ({
   id,
   name,
   price,
+  quantity,
+
 }: {
   link: string;
   id: number;
   name: string;
-  price: string;
+  price: number;
+  quantity: number;
+
 }) => {
-  const counterId = () => {
-    if (id === 4) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const [isDelete, setIsDelete] = useState(counterId);
+
+  const [isDelete, setIsDelete] = useState(false);
   const handleDeleteClick = () => {
     setIsDelete(!isDelete);
   };
@@ -54,7 +52,8 @@ export const CartProductItem = ({
         </div>
       ) : (
         <div className={styles.cartCount}>
-          <Counter />
+          <Counter quantity={quantity}
+/>
           <div className={styles.cartDelete}>
             <button
               type="button"

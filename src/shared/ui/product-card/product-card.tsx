@@ -11,20 +11,16 @@ export const ProductCard = ({
   id,
   name,
   price,
+  quantity
 }: {
   link: string;
   id: number;
   name: string;
-  price: string;
+  price: number;
+  quantity: number;
 }) => {
-  const counterId = () => {
-    if (id === 6) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const [isCounter, setIsCounter] = useState(counterId);
+ 
+  const [isCounter, setIsCounter] = useState(quantity ? true : false);
   const handleClickBasket = (evt: React.MouseEvent | React.TouchEvent) => {
     evt.preventDefault();
     setIsCounter(!isCounter);
@@ -52,7 +48,7 @@ export const ProductCard = ({
         </ul>
 
         {isCounter ? (
-          <Counter />
+          <Counter quantity={quantity}/>
         ) : (
           <div className={styles.buttonMain}>
             <MainButton

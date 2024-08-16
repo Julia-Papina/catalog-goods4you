@@ -4,6 +4,7 @@
   margin: 48px auto;
   flex-direction: column;
   gap: 48px;
+  height: calc(100vh - 90px);
 }
 .cartTitle {
   font-weight: 700;
@@ -23,7 +24,6 @@
   border-radius: 4px;
   padding: 20px 40px;
   gap: 10px;
-  margin-bottom: 44px;
 }
 .cartTotal {
   display: flex;
