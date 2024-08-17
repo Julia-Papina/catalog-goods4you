@@ -11,15 +11,18 @@
 .itemFoto {
   width: 70px;
   height: 70px;
+  object-fit: contain;
+}
+.mainFoto {
+  width: 520px;
+  height: 520px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 1200px) {
   .galery {
     justify-content: center;
     align-items: center;
-  }
-  .mainFoto {
-    width: 520px;
   }
 }
 

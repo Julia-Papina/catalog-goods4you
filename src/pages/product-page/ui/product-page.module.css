@@ -44,6 +44,14 @@
   display: flex;
   justify-content: space-between;
 }
+.ratingStars {
+  display: flex;
+  gap: 4px;
+}
+.starImage {
+  width: 20px;
+  height: 20px;
+}
 .subtitle {
   display: block;
   font-weight: 500;
@@ -113,9 +121,7 @@
   line-height: 24px;
   color: #444b58;
 }
-.ratingStars {
-  cursor: pointer;
-}
+
 .footerContainer {
   margin-top: 48px;
 }

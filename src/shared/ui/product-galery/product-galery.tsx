@@ -1,44 +1,29 @@
-import productFoto from "../../assets/icons/product.svg";
+import { useState } from "react";
 import styles from "./product-galery.module.css";
-export const ProductGalery = () => {
+export const ProductGalery = ({ images }: { images: string[] }) => {
+  const [currentImage, setCurrentImage] = useState(images?.[0]);
+  const handleImagesClick = (image: string) => {
+    setCurrentImage(image);
+  };
   return (
     <div className={styles.galery}>
       <img
         className={styles.mainFoto}
-        src={productFoto}
+        src={currentImage}
         alt="изображение товара"
       />
       <div className={styles.galeryList}>
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
-        <img
-          className={styles.itemFoto}
-          src={productFoto}
-          alt="изображение товара"
-        />
+        {images?.length > 1 &&
+          images?.map((item) => {
+            return (
+              <img
+                className={styles.itemFoto}
+                src={item}
+                alt="изображение товара"
+                onClick={() => handleImagesClick(item)}
+              />
+            );
+          })}
       </div>
     </div>
   );
