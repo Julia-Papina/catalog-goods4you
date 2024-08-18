@@ -1,20 +1,37 @@
+import { useState } from "react";
 import { PageTitle } from "../../../shared/ui";
 import { ProductGalery } from "../../../shared/ui";
 import { StarRed } from "../../../shared/assets";
 import { StarWhite } from "../../../shared/assets";
 import styles from "./product-page.module.css";
 import { MainButton } from "../../../shared/ui";
-import { useGetProductByIdQuery } from "../../../store/slices/api-slice";
+import {
+  useGetCartByUserIdQuery,
+  useGetProductByIdQuery,
+} from "../../../store/slices/api-slice";
 import { useParams } from "react-router-dom";
+import { Counter } from "../../../shared/ui";
+import { ProductType } from "../../../store/types/product-type";
 
 export const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
+  const { data: carts } = useGetCartByUserIdQuery(6);
   const { data, isLoading } = useGetProductByIdQuery(id);
-  console.log("продукт", data);
+
+  const quantityProduct = carts?.carts[0].products?.find(
+    (item: ProductType) => item.id === data?.id
+  )?.quantity;
+
+  //console.log("quantityProduct", quantityProduct);
+  //console.log("продукт", data);
+  const [isCounter, setIsCounter] = useState(false);
+  const handleClickButton = () => {
+    setIsCounter(!isCounter);
+  };
 
   return (
     <div className={styles.container}>
-      <PageTitle title={`${data?.title} | Goods4you`}/>
+      <PageTitle title={`${data?.title} | Goods4you`} />
       <section className={styles.product}>
         {isLoading ? (
           <p>Loading...</p>
@@ -92,12 +109,17 @@ export const ProductPage = () => {
                 </div>
 
                 <div className={styles.buyButton}>
-                  <MainButton
-                    variant="main"
-                    aria-label="Добавить товар в корзину"
-                  >
-                    Add to cart
-                  </MainButton>
+                  {isCounter ? (
+                    <Counter quantity={quantityProduct} />
+                  ) : (
+                    <MainButton
+                      variant="main"
+                      aria-label="Добавить товар в корзину"
+                      onClick={handleClickButton}
+                    >
+                      Add to cart
+                    </MainButton>
+                  )}
                 </div>
               </div>
             </div>

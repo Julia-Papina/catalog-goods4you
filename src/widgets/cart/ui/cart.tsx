@@ -16,7 +16,7 @@ export const CartProductItem = ({
   link: string;
   id: number;
   name: string;
-  price: number;
+  price: string;
   quantity: number;
 
 }) => {
@@ -36,7 +36,7 @@ export const CartProductItem = ({
         <div className={styles.description}>
           <Link to={`/product/${id}`} className={styles.link}>
             <p className={styles.descriptionTitle}>{name}</p>
-            <p className={styles.descriptionPrice}>{price}</p>
+            <p className={styles.descriptionPrice}>{price}$</p>
           </Link>
         </div>
       </div>

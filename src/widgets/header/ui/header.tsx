@@ -21,7 +21,7 @@ export const Header = () => {
     fetch(`https://dummyjson.com/carts/user/${userId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         if (
           data.carts &&
           data.carts.length > 0 &&

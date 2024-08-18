@@ -7,7 +7,7 @@ import { ProductType } from "../../../store/types/product-type";
 export const CartPage = () => {
   const userId = 6;
   const { data, isLoading } = useGetCartByUserIdQuery(userId);
-  console.log(data);
+  //console.log(data);
   return (
     <>
       <PageTitle title="My cart | Goods4you" />
@@ -22,9 +22,9 @@ export const CartPage = () => {
                 <CartProductItem
                   link={item.thumbnail}
                   key={item.id}
-                  id={item.id}
+                  id={item.id as number}
                   name={item.title}
-                  price={item.price}
+                  price={(item.price - (item.price * item.discountPercentage)/ 100).toFixed(2)}
                   quantity={item.quantity}
                 />
               ))}

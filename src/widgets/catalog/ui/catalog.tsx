@@ -14,7 +14,7 @@ export const Catalog = () => {
   // console.log(data);
   // const userId = '33';
   const { data } = useSearchProductsQuery(undefined);
-  console.log("data", data);
+  //console.log("data", data);
   return (
     <section id="catalog" className={styles.catalog}>
       <h2 className={styles.title}>Catalog </h2>
@@ -28,7 +28,7 @@ export const Catalog = () => {
             <ProductCard
               key={item.id}
               link={item.thumbnail}
-              id={item.id}
+              id={item.id as number}
               name={item.title}
               price={item.price}
               quantity={item.quantity}

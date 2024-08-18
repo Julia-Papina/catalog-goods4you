@@ -44,7 +44,7 @@ export const ProductCard = ({
           >
             {name}
           </li>
-          <li className={styles.textPrice}>{price}</li>
+          <li className={styles.textPrice}>{price}$</li>
         </ul>
 
         {isCounter ? (

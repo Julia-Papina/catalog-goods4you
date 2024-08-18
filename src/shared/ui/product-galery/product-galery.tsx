@@ -14,9 +14,10 @@ export const ProductGalery = ({ images }: { images: string[] }) => {
       />
       <div className={styles.galeryList}>
         {images?.length > 1 &&
-          images?.map((item) => {
+          images?.map((item, index) => {
             return (
               <img
+                key={index}
                 className={styles.itemFoto}
                 src={item}
                 alt="изображение товара"
