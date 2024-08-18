@@ -16,7 +16,7 @@ export const CartPage = () => {
   const useAppDispatch: () => AppDispatch = useDispatch;
   const dispatch = useAppDispatch();
   const products = useSelector(selectCartItems);
-  console.log('products', products)
+  //console.log('products', products)
   const cartStatus = useSelector(selectCartStatus);
   const userId = "6";
   //const { data, isLoading } = useGetCartByUserIdQuery(userId);
