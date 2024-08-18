@@ -18,7 +18,7 @@ export const CartPage = () => {
   const products = useSelector(selectCartItems);
   console.log('products', products)
   const cartStatus = useSelector(selectCartStatus);
-  const userId = "1";
+  const userId = "6";
   //const { data, isLoading } = useGetCartByUserIdQuery(userId);
   //console.log(data);
   useEffect(() => {
