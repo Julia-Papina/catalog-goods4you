@@ -28,7 +28,7 @@ export const Catalog = () => {
       setSkip(0);
       setAllProducts([]);
     },
-    500
+    600
   );
 
   return (
@@ -37,9 +37,6 @@ export const Catalog = () => {
 
       <div className={styles.input}>
         <InputSearch
-          search={(searchQuery) => {
-            setSearchQuery(searchQuery);
-          }}
           onChange={handleSearchChange}
         />
       </div>
