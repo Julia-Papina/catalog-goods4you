@@ -11,7 +11,7 @@ export const apiSlice = createApi({
             query: (productId) => `/products/${productId}`,
         }),
         searchProducts: builder.query({
-            query: () => `/products`,
+            query: ({ q, limit, skip }) => `/products/search?q=${q}&limit=${limit}&skip=${skip}`,
         }),
     }),
 });
