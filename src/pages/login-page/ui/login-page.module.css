@@ -1,0 +1,51 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 48px auto;
+  max-width: 1180px;
+  gap: 48px;
+}
+.loginTitle {
+  display: block;
+  margin: 92px auto 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 56px;
+  color: #444b58;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  min-width: 600px;
+  border-radius: 4px;
+  padding: 60px;
+  gap: 60px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.inputForm {
+  width: 100%;
+  display: block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b2b2b2;
+  padding: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+  outline: none;
+}
+.inputForm::placeholder {
+    color:#B2B5BB;
+}
+.loginButton {
+  display: flex;
+  min-width: 177px;
+ 
+}
