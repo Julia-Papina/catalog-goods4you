@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { InputSearch, MainButton } from "../../../shared/ui";
 import { ProductCard } from "../../../shared/ui";
 import styles from "./catalog.module.css";
-import { useSearchProductsQuery } from "../../../store/slices/api-slice";
+import { useSearchProductsQuery } from "../../../services/api-slice";
 import { ProductType } from "../../../store/types/product-type";
 import { debounce } from "lodash";
 

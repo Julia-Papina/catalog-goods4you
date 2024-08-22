@@ -6,3 +6,4 @@ export { PageTitle } from './page-title/page-title';
 export { MenuFaq } from './menu-faq/menu-faq';
 export { ProductGalery } from './product-galery/product-galery';
 export { CartProductItem } from '../../widgets/cart/ui/cart';
+export { ProtectedRoute } from './protected-route/protected-route';

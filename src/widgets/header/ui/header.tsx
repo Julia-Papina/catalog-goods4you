@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useGetUserQuery } from "../../../services/api-user-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTotalQuantity } from "../../../store/slices/cart-slice";
+import { logout, setUser } from "../../../store/slices/auth-slice";
 import basket from "../../../shared/assets/icons/basket.svg";
 import styles from "./header.module.css";
 
@@ -15,9 +19,34 @@ export const Header = () => {
   };
   const [totalQuantity, setTotalQuantity] = useState<number | null>(null);
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const cartQuantity = useSelector(selectTotalQuantity);
+
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useGetUserQuery(undefined, {
+    skip: !token,
+  });
 
   useEffect(() => {
-    const userId = 6;
+    if (user) {
+      dispatch(setUser(user));
+      fetchCart(user.id);
+    }
+  });
+
+  useEffect(() => {
+    if (error) {
+      dispatch(logout());
+      navigate("/login");
+    }
+  }, [error, navigate, dispatch]);
+
+  const fetchCart = (userId: number) => {
     fetch(`https://dummyjson.com/carts/user/${userId}`)
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +60,12 @@ export const Header = () => {
         }
       })
       .catch((err) => console.error("Error fetching cart data:", err));
-  }, [setTotalQuantity]);
+  };
+
+  useEffect(() => {
+    setTotalQuantity(cartQuantity);
+  }, [cartQuantity]);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -71,10 +105,17 @@ export const Header = () => {
                 </div>
               )}
             </div>
-
-            <NavLink className={styles.header__navLink} to={""}>
-              Johnson Smith
-            </NavLink>
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : user ? (
+              <span className={styles.header__navLink}>
+                {user.firstName} {user.lastName}
+              </span>
+            ) : (
+              <NavLink className={styles.header__navLink} to={"/login"}>
+                Sign In
+              </NavLink>
+            )}
           </nav>
         )}
       </div>

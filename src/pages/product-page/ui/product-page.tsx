@@ -8,7 +8,7 @@ import { MainButton } from "../../../shared/ui";
 import {
   useGetCartByUserIdQuery,
   useGetProductByIdQuery,
-} from "../../../store/slices/api-slice";
+} from "../../../services/api-slice";
 import { useParams } from "react-router-dom";
 import { Counter } from "../../../shared/ui";
 import { ProductType } from "../../../store/types/product-type";

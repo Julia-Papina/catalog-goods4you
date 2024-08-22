@@ -1,4 +1,5 @@
 import { ProductType } from "./product-type";
+
 export type CartStateType = {
     items: ProductType[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';

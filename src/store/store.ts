@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './root-reducer.ts';
-import { apiSlice } from './slices/api-slice.ts';
-import { apiUser } from './slices/api-user-slice.ts';
+import { apiSlice } from '../services/api-slice.ts';
+import { apiUser } from '../services/api-user-slice.ts';
 
 export const store = configureStore({
     reducer: rootReducer,

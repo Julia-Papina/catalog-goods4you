@@ -12,7 +12,7 @@ const initialState: CartStateType = {
 
 export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
-  async (userId: string) => {
+  async (userId: number) => {
     const response = await fetch(`https://dummyjson.com/carts/user/${userId}`);
     const data = await response.json();
     return data.carts[0].products;

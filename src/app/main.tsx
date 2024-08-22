@@ -9,6 +9,7 @@ import { CartPage } from "../pages/cart-page";
 import { PageNotFound } from "../pages/page-not-found";
 import { Layout } from "../shared/layouts/layout";
 import { Login } from "../pages/login-page";
+import { ProtectedRoute } from "../shared/ui";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <CartPage />,
+        element: <ProtectedRoute><CartPage /></ProtectedRoute>,
       },
     ],
   },
