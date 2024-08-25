@@ -3,7 +3,6 @@ import { IconPlus } from "../../assets";
 import { NounsDeclension } from "../../constants/declension";
 import styles from "./counter.module.css";
 
-
 export const Counter = ({
   quantity,
   updateCartQuantity,
