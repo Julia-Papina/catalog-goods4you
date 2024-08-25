@@ -1,59 +1,97 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MainButton } from "../../../shared/ui/main-button/main-button";
 import { Counter } from "../../../shared/ui/counter/counter";
 import { BasketIcon } from "../../../shared/assets";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../../../store/slices/cart-slice";
+import { RootState, AppDispatch } from "../../../store/store";
+import { ProductType } from "../../../store/types/product-type";
 import styles from "./cart.module.css";
 
-export const CartProductItem = ({
-  link,
-  id,
-  name,
-  price,
-  quantity,
-
-}: {
-  link: string;
-  id: number;
-  name: string;
-  price: string;
-  quantity: number;
-
+export const CartProductItem: React.FC<{ product: ProductType }> = ({
+  product,
 }) => {
+  const { id, title, price, thumbnail } = product;
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useSelector((state: RootState) => state.auth.user?.id);
+  const cartQuantity = useSelector((state: RootState) => {
+    const item = state.cart.items.find((item) => item.id === id);
+    return item ? item.quantity : 0;
+  });
 
-  const [isDelete, setIsDelete] = useState(false);
-  const handleDeleteClick = () => {
-    setIsDelete(!isDelete);
+  const updateCartQuantity = async (newQuantity: number) => {
+    if (newQuantity <= 0) {
+      try {
+        await dispatch(
+          updateCart({
+            userId: userId || 0,
+            products: [{ ...product, quantity: cartQuantity }],
+          })
+        );
+      } catch (error) {
+        console.error("Failed to update cart:", error);
+      }
+    } else {
+      try {
+        await dispatch(
+          updateCart({
+            userId: userId || 0,
+            products: [{ ...product, quantity: newQuantity }],
+          })
+        );
+      } catch (error) {
+        console.error("Failed to update cart:", error);
+      }
+    }
   };
+
+  const handleAddToCart = async () => {
+    try {
+      await dispatch(
+        updateCart({
+          userId: userId || 0,
+          products: [{ ...product, quantity: 1 }],
+        })
+      );
+    } catch (error) {
+      console.error("Failed to update cart:", error);
+    }
+  };
+
+  const handleDeleteClick = async () => {
+    try {
+      await dispatch(
+        updateCart({
+          userId: userId || 0,
+          products: [{ ...product, quantity: 0 }],
+        })
+      );
+    } catch (error) {
+      console.error("Failed to update cart:", error);
+    }
+  };
+
   return (
     <article className={styles.cart}>
       <div className={styles.cartInfo}>
         <img
-          src={link}
+          src={thumbnail}
           alt="изображение товара в корзине"
           className={styles.iconProduct}
         />
         <div className={styles.description}>
           <Link to={`/product/${id}`} className={styles.link}>
-            <p className={styles.descriptionTitle}>{name}</p>
+            <p className={styles.descriptionTitle}>{title}</p>
             <p className={styles.descriptionPrice}>{price}$</p>
           </Link>
         </div>
       </div>
-      {isDelete ? (
-        <div className={styles.cartDelete}>
-          <MainButton variant="secondary" aria-label="Добавить товар в корзину">
-            <img
-              src={BasketIcon}
-              alt="Иконка корзины товаров"
-              className={styles.basketIcon}
-            ></img>
-          </MainButton>
-        </div>
-      ) : (
+      {cartQuantity > 0 ? (
         <div className={styles.cartCount}>
-          <Counter quantity={quantity}
-/>
+          <Counter
+            quantity={cartQuantity}
+            updateCartQuantity={updateCartQuantity}
+          />
           <div className={styles.cartDelete}>
             <button
               type="button"
@@ -64,6 +102,20 @@ export const CartProductItem = ({
               Delete
             </button>
           </div>
+        </div>
+      ) : (
+        <div className={styles.cartDelete}>
+          <MainButton
+            variant="secondary"
+            aria-label="Добавить товар в корзину"
+            onClick={handleAddToCart}
+          >
+            <img
+              src={BasketIcon}
+              alt="Иконка корзины товаров"
+              className={styles.basketIcon}
+            ></img>
+          </MainButton>
         </div>
       )}
     </article>

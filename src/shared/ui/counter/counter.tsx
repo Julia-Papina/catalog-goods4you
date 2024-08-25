@@ -1,22 +1,27 @@
-import { useState } from "react";
 import { IconMinus } from "../../assets";
 import { IconPlus } from "../../assets";
 import { NounsDeclension } from "../../constants/declension";
 import styles from "./counter.module.css";
 
-export const Counter = ({quantity} : {quantity: number}) => {
-  const [isNumber, SetIsNumber] = useState(quantity ? quantity : 0);
+
+export const Counter = ({
+  quantity,
+  updateCartQuantity,
+}: {
+  quantity: number;
+  updateCartQuantity: (quantity: number) => void ;
+}) => {
   const increment = (evt: React.MouseEvent | React.TouchEvent) => {
     evt.preventDefault();
-    SetIsNumber(isNumber + 1);
+    updateCartQuantity(quantity + 1);
   };
   const decrement = (evt: React.MouseEvent | React.TouchEvent) => {
-    if (!isNumber) {
+    if (!quantity) {
       evt.preventDefault();
       return;
     }
     evt.preventDefault();
-    SetIsNumber(isNumber - 1 || 0);
+    updateCartQuantity(quantity - 1 || 0);
   };
   return (
     <div className={styles.container}>
@@ -30,9 +35,9 @@ export const Counter = ({quantity} : {quantity: number}) => {
         </button>
       </div>
       <div className={styles.buttonWrapper}>
-        <span className={styles.buttonCount}>{`${isNumber}`}&nbsp;</span>
+        <span className={styles.buttonCount}>{`${quantity}`}&nbsp;</span>
         <span className={styles.buttonCount}>
-          {`${NounsDeclension(isNumber, ["item", "item", "items"])} `}
+          {`${NounsDeclension(quantity, ["item", "item", "items"])} `}
         </span>
       </div>
       <div className={styles.buttonWrapper}>

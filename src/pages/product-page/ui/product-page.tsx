@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageTitle } from "../../../shared/ui";
 import { ProductGalery } from "../../../shared/ui";
 import { StarRed } from "../../../shared/assets";
@@ -6,28 +6,51 @@ import { StarWhite } from "../../../shared/assets";
 import styles from "./product-page.module.css";
 import { MainButton } from "../../../shared/ui";
 import {
-  useGetCartByUserIdQuery,
   useGetProductByIdQuery,
 } from "../../../services/api-slice";
 import { useParams } from "react-router-dom";
 import { Counter } from "../../../shared/ui";
-import { ProductType } from "../../../store/types/product-type";
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from "../../../store/store";
+import { updateCart, selectCartItems } from "../../../store/slices/cart-slice";
 
 export const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: carts } = useGetCartByUserIdQuery(6);
-  const { data, isLoading } = useGetProductByIdQuery(id);
-
-  const quantityProduct = carts?.carts[0].products?.find(
-    (item: ProductType) => item.id === data?.id
-  )?.quantity;
-
+  const userId = useSelector((state: RootState) => state.auth.user?.id);
+  const cartItems = useSelector((state: RootState) => selectCartItems(state));
+  const { data , isLoading } = useGetProductByIdQuery(id || ' ');
+  const dispatch = useDispatch<AppDispatch>();
+  const quantityProduct = cartItems.find(item => item.id === data?.id)?.quantity || 0;
   //console.log("quantityProduct", quantityProduct);
   //console.log("продукт", data);
   const [isCounter, setIsCounter] = useState(false);
   const handleClickButton = () => {
     setIsCounter(!isCounter);
   };
+
+  useEffect(() => {
+    if (data) {
+        document.title = `${data.title} | Goods4you`;
+    }
+}, [data]);
+
+const updateCartQuantity = (newQuantity: number) => {
+  if (data && userId) {
+      if (newQuantity <= 0) {
+          dispatch(updateCart({
+              userId,
+              products: cartItems.filter(item => item.id !== data.id)
+          }));
+      } else {
+          dispatch(updateCart({
+              userId,
+              products: cartItems.map(item =>
+                  item.id === data.id ? { ...item, quantity: newQuantity } : item
+              )
+          }));
+      }
+  }
+};
 
   return (
     <div className={styles.container}>
@@ -110,7 +133,7 @@ export const ProductPage = () => {
 
                 <div className={styles.buyButton}>
                   {isCounter ? (
-                    <Counter quantity={quantityProduct} />
+                    <Counter quantity={quantityProduct} updateCartQuantity={updateCartQuantity}/>
                   ) : (
                     <MainButton
                       variant="main"

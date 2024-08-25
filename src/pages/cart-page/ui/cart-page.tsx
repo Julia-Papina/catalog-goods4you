@@ -3,14 +3,16 @@ import { PageTitle } from "../../../shared/ui";
 import { CartProductItem } from "../../../widgets/cart";
 import styles from "./cart-page.module.css";
 //import { useGetCartByUserIdQuery } from "../../../store/slices/api-slice";
-import { ProductType } from "../../../store/types/product-type";
+//import { ProductType } from "../../../store/types/product-type";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchCart,
   selectCartItems,
   selectCartStatus,
+  selectCartError,
 } from "../../../store/slices/cart-slice";
 import { AppDispatch } from "../../../store/store";
+import { RootState } from "../../../store/store";
 
 export const CartPage = () => {
   const useAppDispatch: () => AppDispatch = useDispatch;
@@ -18,14 +20,16 @@ export const CartPage = () => {
   const products = useSelector(selectCartItems);
   //console.log('products', products)
   const cartStatus = useSelector(selectCartStatus);
-  const userId = "6";
+  const cartError = useSelector(selectCartError);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const userId = user?.id;
   //const { data, isLoading } = useGetCartByUserIdQuery(userId);
   //console.log(data);
   useEffect(() => {
-    if (cartStatus === "idle") {
-      dispatch(fetchCart(userId));
+    if (userId && cartStatus === "idle") {
+      dispatch(fetchCart());
     }
-  }, [cartStatus, dispatch]);
+  }, [userId, cartStatus, dispatch]);
   return (
     <>
       <PageTitle title="My cart | Goods4you" />
@@ -33,24 +37,25 @@ export const CartPage = () => {
         <h2 className={styles.cartTitle}>My cart</h2>
         {cartStatus === "loading" ? (
           <p>Loading...</p>
-        )
-        : products.length === 0 ? (
+        ) : cartStatus === "failed" ? (
+          <p className={styles.status}>Failed to load cart: {cartError}</p>
+        ) : products.length === 0 ? (
           <p className={styles.message}>No items</p>
-        )
-        : (
+        ) : (
           <div className={styles.cartContainer}>
             <div className={styles.cartForm}>
-              {products.map((item: ProductType) => (
+              {products.map((item) => (
                 <CartProductItem
-                  link={item.thumbnail}
+                  // thumbnail={item.thumbnail}
+                  product={item}
                   key={item.id}
-                  id={item.id as number}
-                  name={item.title}
-                  price={(
-                    item.price -
-                    (item.price * item.discountPercentage) / 100
-                  ).toFixed(2)}
-                  quantity={item.quantity}
+                  // id={item.id as number}
+                  // name={item.title}
+                  // price={(
+                  //   item.price -
+                  //   (item.price * item.discountPercentage) / 100
+                  // ).toFixed(2)}
+                  // quantity={item.quantity}
                 />
               ))}
             </div>

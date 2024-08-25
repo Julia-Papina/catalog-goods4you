@@ -5,30 +5,46 @@ import { MainButton } from "../main-button/main-button";
 import { BasketIcon } from "../../assets";
 import { Counter } from "../counter/counter";
 import styles from "./product-card.module.css";
+import { ProductType } from "../../../store/types/product-type";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from "../../../store/store";
+import { checkProductInCart, selectProductQuantityInCart } from "../../../store/slices/cart-slice";
 
-export const ProductCard = ({
-  link,
-  id,
-  name,
-  price,
-  quantity
-}: {
-  link: string;
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
+export type ProductCardProps = {
+  product: ProductType;
+  onAddToCart: (product: ProductType) => void;
+  onRemoveFromCart: (product: ProductType) => void;
+}
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product, onRemoveFromCart
+
 }) => {
- 
-  const [isCounter, setIsCounter] = useState(quantity ? true : false);
-  const handleClickBasket = (evt: React.MouseEvent | React.TouchEvent) => {
-    evt.preventDefault();
-    setIsCounter(!isCounter);
-  };
+
+  const dispatch = useDispatch<AppDispatch>();
+    const cartQuantity = useSelector((state: RootState) => selectProductQuantityInCart(state, product?.id));
+    const { id, title, price, discountPercentage, thumbnail } = product;
+    const discountedPrice = (price - (price * discountPercentage / 100)).toFixed(2);
+  const [isCounter, setIsCounter] = useState(cartQuantity ? true : false);
+
+  const  handleClickBasket = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsCounter(!isCounter)
+    dispatch(checkProductInCart({ productId: product?.id }));
+};
+
+const updateCartQuantity = () => {
+  if (cartQuantity > 0  ) {
+    dispatch(checkProductInCart({productId: product?.id}))
+  } else {
+      onRemoveFromCart(product)
+  }
+}
+
   return (
     <article className={styles.productCard}>
       <Link to={`/product/${id}`} className={styles.link}>
-        <img className={styles.image} src={link} alt="Изображение товара"></img>
+        <img className={styles.image} src={thumbnail} alt="Изображение товара"></img>
         <div className={styles.overlay}>Show details</div>
       
       <div className={styles.description}>
@@ -42,13 +58,13 @@ export const ProductCard = ({
               [styles.textTitle__counter]: isCounter,
             })}
           >
-            {name}
+            {title}
           </li>
-          <li className={styles.textPrice}>{price}$</li>
+          <li className={styles.textPrice}>{discountedPrice}$</li>
         </ul>
 
         {isCounter ? (
-          <Counter quantity={quantity}/>
+          <Counter quantity={cartQuantity} updateCartQuantity={updateCartQuantity}/>
         ) : (
           <div className={styles.buttonMain}>
             <MainButton
