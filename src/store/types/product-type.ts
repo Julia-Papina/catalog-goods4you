@@ -15,4 +15,5 @@ export type ProductType = {
     category: string;
     images: string[];
     tags: string[];
+    stock: number;
 }

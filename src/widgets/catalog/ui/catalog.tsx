@@ -42,7 +42,7 @@ export const Catalog = () => {
       const existingProduct = cartItems.find((item) => item.id === product.id);
       const updatedItems = existingProduct
         ? cartItems.map((item) =>
-            item.id === product.id ? { ...item, quantity: +1 } : item
+            item.id === product.id ? { ...item, quantity: + 1 } : item
           )
         : [...cartItems, { ...product, quantity: 1 }];
 
@@ -54,9 +54,11 @@ export const Catalog = () => {
     if (userId) {
       const updatedItems = cartItems
         .map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
         )
-        .filter((item) => item.quantity > 0);
+        .filter((item) => item.quantity >= 0);
 
       dispatch(updateCart({ userId, products: updatedItems }));
     }

@@ -37,7 +37,7 @@ export const Header = () => {
       dispatch(setUser(user));
       fetchCart(user.id);
     }
-  });
+  }, [user, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -57,6 +57,8 @@ export const Header = () => {
           data.carts[0].totalQuantity > 0
         ) {
           setTotalQuantity(data.carts[0].totalQuantity);
+        } else {
+          setTotalQuantity(0);
         }
       })
       .catch((err) => console.error("Error fetching cart data:", err));
@@ -92,7 +94,7 @@ export const Header = () => {
               <NavLink className={styles.header__navLink} to={"/cart"}>
                 Cart
               </NavLink>
-              {totalQuantity !== null && totalQuantity > 0 && (
+              {user && totalQuantity !== null && totalQuantity > 0 && (
                 <div className={styles.header__cartBasket}>
                   <img
                     className={styles.header__imageBasket}

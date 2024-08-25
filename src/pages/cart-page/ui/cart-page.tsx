@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { PageTitle } from "../../../shared/ui";
 import { CartProductItem } from "../../../widgets/cart";
 import styles from "./cart-page.module.css";
-//import { useGetCartByUserIdQuery } from "../../../store/slices/api-slice";
-//import { ProductType } from "../../../store/types/product-type";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchCart,
@@ -46,16 +44,8 @@ export const CartPage = () => {
             <div className={styles.cartForm}>
               {products.map((item) => (
                 <CartProductItem
-                  // thumbnail={item.thumbnail}
                   product={item}
                   key={item.id}
-                  // id={item.id as number}
-                  // name={item.title}
-                  // price={(
-                  //   item.price -
-                  //   (item.price * item.discountPercentage) / 100
-                  // ).toFixed(2)}
-                  // quantity={item.quantity}
                 />
               ))}
             </div>
