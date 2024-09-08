@@ -1,0 +1,45 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1180px;
+  /* padding: 48px 130px 0; */
+  margin: 48px auto 0;
+}
+
+.title {
+  display: flex;
+  max-width: 1180px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 56px;
+  color: #444b58;
+  margin: 0;
+}
+
+.cardsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+}
+.catalogButton {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  width: 177px;
+  margin: 0 auto;
+}
+
+ @media screen and (max-width: 799px) {
+  .catalog {
+    padding: 10px;
+    gap: 10px
+
+  }
+  .cardsList {
+    gap: 10px;
+  }
+ 
+} 

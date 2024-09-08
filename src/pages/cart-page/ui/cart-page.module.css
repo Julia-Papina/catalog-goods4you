@@ -1,0 +1,105 @@
+.cart {
+  display: flex;
+  max-width: 1180px;
+  margin: 48px auto;
+  flex-direction: column;
+  gap: 48px;
+  min-height: calc(100vh - 90px); 
+}
+.cartTitle {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 56px;
+  color: #444b58;
+  margin: 0;
+}
+.cartContainer {
+  display: flex;
+  gap: 48px;
+}
+.cartForm {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  padding: 20px 40px;
+  gap: 10px;
+}
+.cartTotal {
+  display: flex;
+  flex-direction: column;
+  width: 356px;
+  gap: 9.5px;
+}
+.priceCalculation {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.calculationItem {
+  display: flex;
+  justify-content: space-between;
+}
+.priceTotal {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #b2b5bb;
+}
+.total {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #444b58;
+}
+.priceDiscount {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #b2b5bb;
+}
+.discount {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #444b58;
+}
+.priceFinal {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #b2b5bb;
+}
+.final {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #444b58;
+}
+.message {
+  display: block;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #b2b5bb;
+ margin: 0 auto;
+}
+
+@media screen and (max-width: 799px) {
+  .cart {
+    margin: 20px auto;
+    gap: 20px
+  }
+  .cartContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cartTotal {
+    width: 300px;
+  }
+  .cartForm {
+    padding: 5px;
+  }
+}

@@ -1,0 +1,38 @@
+.galery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.galeryList {
+  display: flex;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+}
+.itemFoto {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+.mainFoto {
+  width: 520px;
+  height: 520px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1200px) {
+  .galery {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .mainFoto {
+    width: 250px;
+  }
+  .galeryList {
+    overflow: auto;
+    width: 250px;
+    gap: 5px;
+  }
+}

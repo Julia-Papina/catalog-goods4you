@@ -1,0 +1,118 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image {
+  width: 370px;
+  height: 300px;
+}
+
+.link {
+  text-decoration: none;
+  color: #444b58;
+}
+.description {
+  display: flex;
+  justify-content: space-between;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+.textCounter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 172px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50px;
+}
+.textTitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #444b58;
+  overflow: hidden;
+  max-width: 310px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textTitle__counter {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #444b58;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 172px;
+  white-space: nowrap;
+}
+
+.textPrice {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #444b58;
+}
+.basketIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 300px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  background: #87878740;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 37.57px;
+  color: #ffffff;
+  align-items: center;
+}
+
+.productCard:hover .overlay {
+  visibility: visible;
+  opacity: 60%;
+}
+
+.textTitle:hover {
+  border-bottom: 1px solid #444b58;
+  cursor: pointer;
+}
+.buttonMain {
+  width: 50px;
+}
+@media screen and (max-width: 465px) {
+  .image {
+    width: 250px;
+    height: 250px;
+  }
+  .overlay {
+    height: 250px;
+  }
+  .description {
+    flex-direction: column;
+  }
+}

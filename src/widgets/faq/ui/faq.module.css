@@ -1,0 +1,31 @@
+.faq {
+    display: flex;
+    background-color: #484283;
+    margin-top: 48px;
+    
+}
+.faq__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 60px auto;
+    width: 880px;
+    /* align-items: center; */
+}
+.faq__title {
+    display: block;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 56px;
+    display: block;
+    margin: 0;
+    border-bottom: 1px solid #FFFFFF;
+    height: 56px;
+    padding-bottom: 20px;
+}
+@media screen and (max-width: 465px) {
+    .faq__container {
+        padding: 10px;
+    }
+}
