@@ -2,7 +2,7 @@
 ## Онлайн магазин Goods4you (Mock Marketplace)
 ## Деплой проекта: https://catalog-goods4you.vercel.app/
 ### Стек: 
-* React, TypeScript, Vite, Redux Toolkit, RTK Query, Authentication: User login (Mock data)
+* React, TypeScript, Vite, Redux Toolkit, RTK Query, Authentication: User login (Mock data), адаптивная вёрстка
 * Используется публичное API для получения данных: https://dummyjson.com/docs
 * Для авторизации пользователя и просмотра корзины с товарами использовать моковые данные: 
 #### username: oliviaw, password: oliviawpass
