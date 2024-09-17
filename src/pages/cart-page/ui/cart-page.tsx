@@ -42,7 +42,7 @@ export const CartPage = () => {
         ) : (
           <div className={styles.cartContainer}>
             <div className={styles.cartForm}>
-              {products.map((item) => (
+              {products?.map((item) => (
                 <CartProductItem
                   product={item}
                   key={item.id}

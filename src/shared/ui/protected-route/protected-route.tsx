@@ -8,7 +8,7 @@ const token = useSelector((state: RootState) => state.apiUser);
 const navigate = useNavigate();
 useEffect(() => {
     if (!token) {
-        navigate('/login');
+        navigate('/');
     }
 }, [token, navigate]);
 
