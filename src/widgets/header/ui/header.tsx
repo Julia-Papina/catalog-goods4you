@@ -42,7 +42,7 @@ export const Header = () => {
   useEffect(() => {
     if (error) {
       dispatch(logout());
-      navigate("/login");
+      navigate("/");
     }
   }, [error, navigate, dispatch]);
 
